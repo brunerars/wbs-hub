@@ -13,7 +13,7 @@ services:
         - "traefik.enable=true"
         - "traefik.http.routers.wbs-hub.rule=Host(`wbs.arvsystems.cloud`)"
         - "traefik.http.routers.wbs-hub.entrypoints=websecure"
-        - "traefik.http.routers.wbs-hub.tls.certresolver=letsencrypt"
+        - "traefik.http.routers.wbs-hub.tls.certresolver=letsencryptresolver"
         - "traefik.http.services.wbs-hub.loadbalancer.server.port=8501"
       restart_policy:
         condition: on-failure
