@@ -73,7 +73,8 @@ def gerar_tarefas_expandidas(
         percentuais = calcular_percentuais(dias)
 
         for percentual in percentuais:
-            tarefa_formatada = f"{nome_wbs} - {ordem}. {nome_tarefa} - {percentual}%"
+            prefixo = f"{nome_wbs} - " if nome_wbs else ""
+            tarefa_formatada = f"{prefixo}{ordem}. {nome_tarefa} - {percentual}%"
 
             tarefas_expandidas.append({
                 "tarefa": tarefa_formatada,
@@ -155,7 +156,8 @@ def gerar_tarefas_multiplicador(
             continue
 
         for tarefa in tarefas_fixas:
-            tarefa_formatada = f"{nome_wbs} - {item} - {tarefa}"
+            prefixo = f"{nome_wbs} - " if nome_wbs else ""
+            tarefa_formatada = f"{prefixo}{item} - {tarefa}"
 
             tarefas_expandidas.append({
                 "tarefa": tarefa_formatada,

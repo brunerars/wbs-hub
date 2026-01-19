@@ -345,7 +345,7 @@ def main():
         categoria, itens = render_ui_multiplicador(template, wbs_type)
         
         # Validação
-        if nome_wbs and projeto and itens:
+        if projeto and itens:
             is_valid, msg_erro = validar_multiplicador(itens)
             if is_valid:
                 pode_enviar = True
@@ -363,9 +363,7 @@ def main():
         
         # Mensagens de orientação
         if not pode_enviar:
-            if not nome_wbs:
-                st.info("👆 Preencha o nome/código do WBS")
-            elif not projeto:
+            if not projeto:
                 st.info("👆 Preencha o projeto")
             elif not itens:
                 st.info("👆 Digite pelo menos um item")
@@ -375,7 +373,7 @@ def main():
         tarefas_selecionadas = render_ui_percentual(template, wbs_type)
         
         # Validação
-        if nome_wbs and projeto and tarefas_selecionadas:
+        if projeto and tarefas_selecionadas:
             is_valid, msg_erro = validar_selecao(tarefas_selecionadas)
             if is_valid:
                 pode_enviar = True
@@ -391,9 +389,7 @@ def main():
         
         # Mensagens de orientação
         if not pode_enviar:
-            if not nome_wbs:
-                st.info("👆 Preencha o nome/código do WBS")
-            elif not projeto:
+            if not projeto:
                 st.info("👆 Preencha o projeto")
             elif not tarefas_selecionadas:
                 st.info("👆 Selecione pelo menos uma tarefa")

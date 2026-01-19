@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  wbs-hub:
+    image: wbs-hub:latest
+    networks:
+      - traefik-public
+    volumes:
+      - wbs-data:/app/data
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.wbs-hub.rule=Host(`wbs.arvsystems.cloud`)"
+        - "traefik.http.routers.wbs-hub.entrypoints=websecure"
+        - "traefik.http.routers.wbs-hub.tls.certresolver=letsencrypt"
+        - "traefik.http.services.wbs-hub.loadbalancer.server.port=8501"
+      restart_policy:
+        condition: on-failure
+
+networks:
+  traefik-public:
+    external: true
+
+volumes:
+  wbs-data:
